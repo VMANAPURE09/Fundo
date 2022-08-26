@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using RepositoryLayer.Context;
+using RepositoryLayer.Interfaces;
+using RepositoryLayer.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +32,8 @@ namespace FundoNote
             services.AddControllers();
             services.AddDbContext<FundooContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("Fundoo_Notes")));
+            services.AddTransient<IUserRL, UserRL>();
+            services.AddTransient<IUserRL, UserRL>(); 
 
         }
 
