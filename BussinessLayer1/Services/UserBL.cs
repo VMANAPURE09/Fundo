@@ -15,7 +15,6 @@ namespace BusinessLayer.Services
             this.userRL = userRL;
         }
 
-      
         public void RegisterUser(UserPostModel userPostModel)
         {
             try
@@ -25,6 +24,17 @@ namespace BusinessLayer.Services
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+        public string LoginUser(LoginModel loginModel)
+        {
+            try
+            {
+                return userRL.loginUser(loginModel);
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
     }
