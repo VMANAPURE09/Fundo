@@ -30,7 +30,19 @@ namespace BusinessLayer.Services
         {
             try
             {
-                return userRL.loginUser(loginModel);
+                return this.userRL.loginUser(loginModel);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public bool ForgotPassword(string email)
+        {
+            try
+            {
+                return this.userRL.ForgotPassword(email);
             }
             catch (Exception e)
             {
