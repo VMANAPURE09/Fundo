@@ -7,6 +7,8 @@ namespace RepositoryLayer.Services.Entity
 {
     public class User
     {
+        public int userId;
+
         [Key]
         public int UserId { get; set; }
         public string FirstName { get; set; }

@@ -43,7 +43,7 @@ namespace RepositoryLayer.Services
             }
         }
 
-        private string GenerateJwtToken(string email, int UserId)
+        private string GenerateJwtToken(string email, int userId)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace RepositoryLayer.Services
                     Subject = new ClaimsIdentity(new Claim[]
                     {
                     new Claim("Email", email),
-                    new Claim("UserId",UserId.ToString()),
+                    new Claim("UserId",userId.ToString()),
                     }),
                     Expires = DateTime.UtcNow.AddHours(2),
 
@@ -184,6 +184,25 @@ namespace RepositoryLayer.Services
 
                 fundooQ.BeginReceive();
                 fundooQ.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool ResetPassword(string email, PasswordModel passwordModel)
+        {
+            try
+            {
+                var user = fundooContext.Users.Where(x => x.Email == email).FirstOrDefault();
+                if (passwordModel.NewPassword != passwordModel.ConfirmNewPassword)
+                {
+                    return false;
+                }
+                user.Password = passwordModel.NewPassword;
+                fundooContext.SaveChanges();
                 return true;
             }
             catch (Exception ex)
