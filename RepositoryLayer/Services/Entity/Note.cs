@@ -13,7 +13,7 @@ namespace RepositoryLayer.Services.Entity
         public int noteId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public string Colour { get; set; }
+        public string Color { get; set; }
         public bool IsArchive { get; set; }
         public bool IsPin { get; set; }
         public bool IsReminder { get; set; }
@@ -27,5 +27,8 @@ namespace RepositoryLayer.Services.Entity
         [ForeignKey("User")]
         public int UserId { get; set; }
         public User user { get; set; }
+       
+       
     }
 }
+ 

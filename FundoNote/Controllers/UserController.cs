@@ -80,7 +80,7 @@ namespace FundoNote.Controllers
                 //Authorization, match email from token
                 var userid = User.Claims.FirstOrDefault(x => x.Type.ToString().Equals("userId", StringComparison.InvariantCultureIgnoreCase));
                 int UserID = Int32.Parse(userid.Value);
-                var result = fundooContext.Users.Where(u => u.userId == UserID).FirstOrDefault();
+                var result = fundooContext.Users.Where(u => u.UserId == UserID).FirstOrDefault();
                 string Email = result.Email.ToString();
                 bool res = this.userBL.ResetPassword(Email, passwordModel);
                 if (res == false)
